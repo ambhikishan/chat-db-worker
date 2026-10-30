@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: db-worker
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: chat-db-writers
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      # Converts JSON back into your ChatMessage object
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        # Crucial: Allows Spring to trust your model package for deserialization
+        spring.json.trusted.packages: "*"
+server:
+  port: 8085
