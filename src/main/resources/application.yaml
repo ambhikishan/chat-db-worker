@@ -2,6 +2,9 @@ spring:
   application:
     name: db-worker
   kafka:
+
+    listener:
+      type: batch
     bootstrap-servers: localhost:9092
     consumer:
       group-id: chat-db-writers
@@ -12,5 +15,7 @@ spring:
       properties:
         # Crucial: Allows Spring to trust your model package for deserialization
         spring.json.trusted.packages: "*"
+  mongodb:
+    uri: mongodb://localhost:27017/chatdb
 server:
   port: 8085
