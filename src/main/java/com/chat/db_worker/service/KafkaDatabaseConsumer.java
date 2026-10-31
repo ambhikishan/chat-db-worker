@@ -38,13 +38,14 @@ public class KafkaDatabaseConsumer {
             messageBody.setFrom(key[0]);
             messageBody.setTo(key[1]);
             messageBody.setMessage(record.value().substring(25+record.key().length(),record.value().length()-2));
-            System.out.println(messageBody.getMessage());
             list.add(messageBody);
 
         }
 
-//    this.messageBodyRepository.saveAll(list);
+    this.messageBodyRepository.saveAll(list);
 
     }
+
+
 
 }

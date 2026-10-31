@@ -1,5 +1,8 @@
 package com.chat.db_worker.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Messages")
 public class MessageBody {
     String from;
     String to;
