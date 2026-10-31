@@ -12,8 +12,13 @@ public class MessagesFetcher {
     @Autowired
     private MessageBodyRepository messageBodyRepository;
 
-    public List<MessageBody> messageBodyList()
+    public List<MessageBody> messageBodyListOfUser(String userName)
     {
-        return this.messageBodyRepository.findAll();
+        return this.messageBodyRepository.findAllUserMessages(userName);
+    }
+
+    public List<MessageBody> findConversation(String userName, String targetUser)
+    {
+        return messageBodyRepository.findConversation(userName,targetUser);
     }
 }
