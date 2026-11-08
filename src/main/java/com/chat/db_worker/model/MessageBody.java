@@ -2,11 +2,14 @@ package com.chat.db_worker.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.Instant;
+
 @Document(collection = "Messages")
 public class MessageBody {
     String from;
     String to;
     String message;
+    private Instant timestamp;
 
     @Override
     public String toString() {
@@ -39,5 +42,14 @@ public class MessageBody {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public void setTimestamp()
+    {
+        this.timestamp = Instant.now();
+    }
+    public Instant getTimestamp()
+    {
+        return this.timestamp;
     }
 }
